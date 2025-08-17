@@ -4,14 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       batch_size:
-        description: 'Number of PRs to generate (1-50)'
+        description: 'Number of PRs to generate'
         required: true
-        default: '10'
+        default: '500'
         type: string
   
   schedule:
-    # Run every 4 hours to maximize PR generation while respecting API limits
-    - cron: '0 */4 * * *'
+    - cron: '0 * * * *'
 
 permissions:
   contents: write
@@ -135,7 +134,7 @@ jobs:
             while [ $retry_count -lt $max_retries ]; do
               pr_result=$(gh pr create \
                 --title "🤖 Generated: txt file ${file_uuid}" \
-                --body "Workflow Run**: [\`${{ github.run_id }}\`](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
+                --body "Workflow Run: [\`${{ github.run_id }}\`](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
                 --head "$branch_name" \
                 --base main)
               

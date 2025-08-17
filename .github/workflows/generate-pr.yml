@@ -43,11 +43,8 @@ jobs:
       - name: Set batch configuration
         id: config
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            echo "batch_size=5" >> $GITHUB_OUTPUT
-          else
-            echo "batch_size=${{ github.event.inputs.batch_size }}" >> $GITHUB_OUTPUT
-          fi
+          echo "batch_size=${{ github.event.inputs.batch_size }}" >> $GITHUB_OUTPUT
+
           
           # Generate unique identifier for this batch
           batch_id="batch-${{ matrix.batch }}-$(date +%Y%m%d-%H%M%S)-$(uuidgen | cut -d'-' -f1)"

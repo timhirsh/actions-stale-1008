@@ -6,7 +6,7 @@ on:
       batch_size:
         description: 'Number of PRs to generate'
         required: true
-        default: '500'
+        default: '600'
         type: string
   
   schedule:
@@ -44,7 +44,7 @@ jobs:
         id: config
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            echo "batch_size=500" >> $GITHUB_OUTPUT
+            echo "batch_size=600" >> $GITHUB_OUTPUT
           else
             echo "batch_size=${{ github.event.inputs.batch_size }}" >> $GITHUB_OUTPUT
           fi

@@ -198,9 +198,11 @@ jobs:
             echo "- File Type: txt" >> $GITHUB_STEP_SUMMARY
             echo "- Content Length: medium" >> $GITHUB_STEP_SUMMARY
           else
+            batch_size="${{ github.event.inputs.batch_size }}"
+            total_prs=$((batch_size * 5))
             echo "**Configuration** (Manual):" >> $GITHUB_STEP_SUMMARY
-            echo "- Batch Size: ${{ github.event.inputs.batch_size }} PRs per matrix job" >> $GITHUB_STEP_SUMMARY
-            echo "- Total PRs: ~${{ github.event.inputs.batch_size * 5 }} (5 matrix jobs × ${{ github.event.inputs.batch_size }} PRs)" >> $GITHUB_STEP_SUMMARY
+            echo "- Batch Size: $batch_size PRs per matrix job" >> $GITHUB_STEP_SUMMARY
+            echo "- Total PRs: ~$total_prs (5 matrix jobs × $batch_size PRs)" >> $GITHUB_STEP_SUMMARY
             echo "- File Type: txt" >> $GITHUB_STEP_SUMMARY
             echo "- Content Length: medium" >> $GITHUB_STEP_SUMMARY
           fi

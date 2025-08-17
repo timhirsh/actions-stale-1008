@@ -6,7 +6,7 @@ on:
       batch_size:
         description: 'Number of PRs to generate'
         required: true
-        default: '100'
+        default: '500'
         type: string
   
   schedule:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        batch: [1, 2, 3, 4, 5] # Generate 5 parallel jobs
+        batch: [1] # Generate parallel jobs
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

@@ -152,7 +152,7 @@ jobs:
             done
             
             # Small delay between PRs to be respectful of API
-            sleep 2
+            sleep 5
           done
           
           echo "🎉 Batch complete! Generated $batch_size PRs in matrix job ${{ matrix.batch }}"

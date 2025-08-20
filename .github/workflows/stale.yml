@@ -28,4 +28,5 @@ jobs:
           exempt-pr-labels: 'not-stale'
           operations-per-run: 1000
           remove-stale-when-updated: true
+          ascending: true
 
